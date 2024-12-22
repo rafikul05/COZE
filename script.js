@@ -23,4 +23,4 @@ setInterval(() => {
 }, 5000);
 
 // Initial setup
-updateSliderPosition();
+updateSliderPosition();COZE

@@ -3,7 +3,9 @@ body {
     margin: 0;
     padding: 0;
 }
-
+img{
+    object-fit: fill;
+}
 /* Sticky Header */
 header {
     position: sticky;
@@ -270,6 +272,138 @@ body {
     padding: 10px;
     cursor: pointer;
     right: 10px;
+}
+
+/* Add this to your styles.css file */
+
+/* Categories Section */
+#categories {
+    padding: 20px 10px; /* Increased padding for better spacing */
+    background-color: #f9f9f9; /* Light background color */
+    text-align: center;
+}
+
+.category-grid {
+    display: flex;
+    justify-content: center; /* Center categories */
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 20px; /* Space between categories */
+}
+
+.category {
+    background-color: #fff; /* White background for each category */
+    
+    width: 260px; /* Fixed width for larger screens */
+    height: 260px; /* Fixed height for larger screens */
+    display: flex; /* Flexbox for centering content */
+    flex-direction: column; /* Stack image and text */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition */
+    overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+.category:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+.category .image {
+    width: 240px; /* Set width for circular images */
+    height: 240px; /* Set height for circular images */
+   
+    margin-bottom: 10px; /* Space between image and text */
+    transition: transform 0.3s; /* Smooth transition for image */
+}
+
+.category img:hover {
+    transform: scale(1.1); /* Slightly enlarge image on hover */
+}
+
+.category h3 {
+    font-size: 14px; /* Adjust font size */
+    color: #333; /* Text color */
+    font-weight: bold; /* Bold text */
+    margin: 0; /* Remove default margin */
+}
+.namepic{
+    display: flex;
+    flex-direction: column;
+}
+@media (max-width: 1166px) {
+    .category-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .category {
+        background-color: #fff;
+        height: 200px;
+        width: 200px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .category:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .category img {
+        width: 100%;
+        height: 100%;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    .category h3 {
+        font-size: 5px; /* Smaller font size for mobile */
+    }
+    .nam{
+        font-size: 15px;
+    }
+    .image{
+        margin: 0px;
+        
+    }
+    a{
+        text-decoration: none;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+    .category-grid {
+        gap: 10px; /* Reduce gap for mobile */
+        margin-top: 30px;
+    }
+
+    .category {
+        width:80px; /* Smaller width for mobile */
+        height: 80px; /* Smaller height for mobile */
+        border-radius: 40px;
+     
+    }
+
+    .category img {
+        width: 80px; /* Smaller image size for mobile */
+        height: 80px; /* Smaller image size for mobile */
+        border-radius: 40px;
+    }
+
+    .category h3 {
+        font-size: 5px; /* Smaller font size for mobile */
+    }
+    .nam{
+        font-size: 9px;
+    }
+    .image{
+        margin: 0px;
+    }
 }
 .shop-now {
     background-color: #28a745;
