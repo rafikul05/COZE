@@ -236,7 +236,7 @@ body {
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Maintain aspect ratio */
+    object-fit: contain; /* Maintain aspect ratio */
 }
 
 .caption {
@@ -280,7 +280,7 @@ body {
 #categories {
     padding: 20px 10px; /* Increased padding for better spacing */
     background-color: #f9f9f9; /* Light background color */
-    text-align: center;
+    
 }
 
 .category-grid {
@@ -312,7 +312,7 @@ body {
 .category .image {
     width: 240px; /* Set width for circular images */
     height: 240px; /* Set height for circular images */
-   
+   object-fit: contain;
     margin-bottom: 10px; /* Space between image and text */
     transition: transform 0.3s; /* Smooth transition for image */
 }
@@ -330,6 +330,7 @@ body {
 .namepic{
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 @media (max-width: 1166px) {
     .category-grid {
@@ -380,19 +381,21 @@ body {
     .category-grid {
         gap: 10px; /* Reduce gap for mobile */
         margin-top: 30px;
+        display: flex;
+        flex-direction: row;
     }
 
     .category {
-        width:80px; /* Smaller width for mobile */
-        height: 80px; /* Smaller height for mobile */
-        border-radius: 40px;
+        width:70px; /* Smaller width for mobile */
+        height: 70px; /* Smaller height for mobile */
+        border-radius: 35px;
      
     }
 
     .category img {
-        width: 80px; /* Smaller image size for mobile */
-        height: 80px; /* Smaller image size for mobile */
-        border-radius: 40px;
+        width: 70px; /* Smaller image size for mobile */
+        height: 70px; /* Smaller image size for mobile */
+        border-radius: 35px;
     }
 
     .category h3 {
@@ -446,99 +449,231 @@ main {
     text-align: center;
 }
 
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjusted min width for better responsiveness */
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.product {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s; /* Added box-shadow transition */
-}
-
-.product:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Added shadow on hover */
-}
-
-.product img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
-
-.product h3 {
-    font-size: 1.2em;
-    margin: 10px 0;
-}
-
-.product p {
-    font-size: 1.1em;
-    color: #333;
-}
-
-.proBut{
-    background-color: #007bff;
+.buy-now {
+    background-color: #e74c3c; /* Red background for Buy Now button */
     color: white;
     border: none;
-    padding: 10px;
+    padding: 10px 15px;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
 }
 
-.proBut:hover {
-    background-color: #0056b3;
+.buy-now:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
+
+@media (max-width: 768px) {
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.newsletter {
+    padding: 20px;
+    text-align: center;
+}
+h2, .newsletter h2 {
+    margin-bottom: 20px;
+}
+
+#featured-products {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+#featured-products h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.product-description {
+    font-size: 14px;
+    color: #666;
+    margin: 10px 0;
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.product-rating {
+    margin: 10px 0;
+    color: #f39c12; /* Gold color for stars */
+}
+
+@media (max-width: 780px) {
+    .add-to-cart {margin: 5px;}
+    
+}
+.add-to-cart {
+    background-color: #4CAF50; /* Green button */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.newsletter {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.newsletter input {
+    padding: 10px;
+    border: 1px solid #ddd;
+border-radius: 5px;
+width: 250px; /* Set a fixed width for the input */
+margin-right: 10px; /* Space between input and button */
+}
+
+.newsletter button {
+background-color: #4CAF50; /* Green button */
+color: white;
+border: none;
+padding: 10px 15px;
+cursor: pointer;
+border-radius: 5px;
+transition: background-color 0.3s;
+}
+
+.newsletter button:hover {
+background-color: #45a049; /* Darker green on hover */
 }
 
 footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #333;
-    color: white;
-    position: relative;
-    bottom: 0;
+text-align: center;
+padding: 20px;
+background-color: #333;
+color: #fff;
+}
+
+footer .social-media {
+margin-top: 10px;
+}
+
+footer .social-media a {
+margin: 0 10px;
+color: #fff;
+text-decoration: none;
+transition: color 0.3s;
+}
+
+footer .social-media a:hover {
+color: #FFD700; /* Gold color on hover */
+}
+
+#cart-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
-.footer-links {
-    margin-bottom: 10px;
+#cart-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 400px; /* Adjust width as needed */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow-y: auto; /* Allow scrolling if content overflows */
+    max-height: 80vh; /* Limit height to 80% of viewport */
 }
 
-.footer-links h3 {
+#cart-items {
+    max-height: 300px; /* Set a max height for the cart items */
+    overflow-y: auto; /* Enable scrolling for cart items */
+    margin-bottom: 20px; /* Space between items and total */
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.cart-item img {
+    width: 100px; /* Fixed width for product images */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Rounded corners for images */
+}
+
+.cart-item-details {
+    flex-grow: 1; /* Allow details to take up remaining space */
+    margin-left: 10px; /* Space between image and details */
+}
+
+.cart-item h3 {
     margin: 0;
+    font-size: 16px; /* Adjust font size */
 }
 
-.footer-links ul {
-    list-style-type: none;
-    padding: 0;
+.cart-item p {
+    margin: 5px 0; /* Space between paragraphs */
+    font-size: 14px; /* Adjust font size */
+    color: #666; /* Lighter color for description */
 }
 
-.footer-links ul li {
-    margin: 5px 0;
-}
-
-.footer-links ul li a {
+.remove-item {
+    background-color: #e74c3c; /* Red background for remove button */
     color: white;
-    text-decoration: none;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-.footer-links ul li a:hover {
-    text-decoration: underline;
-}
-
-.footer-links ul li a:focus {
-    outline: 2px solid #28a745; /* Focus outline for accessibility */
-}
-
-/* Additional styles for better user experience */
-button:focus {
-    outline: 2px solid #28a745; /* Focus outline for buttons */
+.remove-item:hover {
+    background-color: #c0392b; /* Darker red on hover */
 }
 
 /* Responsive adjustments for product grid */
@@ -557,6 +692,6 @@ button:focus {
     }
 
     .product-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust for very small screens */
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* Adjust for very small screens */
     }
 }
