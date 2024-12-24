@@ -7,31 +7,56 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="img/Screenshot from 2024-12-16 12-06-13.png" alt="Online Clothing Store Logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#shop">Shop</a>
-                    <ul class="dropdown">
-                        <li><a href="#men">Men</a></li>
-                        <li><a href="#women">Women</a></li>
-                        <li><a href="#accessories">Accessories</a></li>
-                    </ul>
-                </li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="header-right">
-            <div style="position: relative;">
-                <input type="text" placeholder="Search..." class="search-bar" aria-label="Search">
-                <i class="search-icon">🔍</i> <!-- You can replace this with an actual icon from a library -->
+    <header class="sticky-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html"><img src="img/Screenshot from 2024-12-16 12-06-13.png" alt="Your Store Logo"></a>
             </div>
-            <a href="#cart" class="cart-icon" aria-label="Shopping Cart">🛒</a>
-            <a href="#login" class="user-icon" aria-label="User  Account">👤</a>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">🏠 Home</a></li>
+                    <li><a href="products.html">🛍️ Products</a></li>
+                    <li><a href="about.html">ℹ️ About Us</a></li>
+                    <li><a href="contact.html">📞 Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" aria-haspopup="true" aria-expanded="false">📂 Categories</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="category1.html">Category 1</a></li>
+                            <li><a href="category2.html">Category 2</a></li>
+                            <li><a href="category3.html">Category 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="user-account dropdown">
+                      
+                        <a href="#" aria-haspopup="true" aria-expanded="false">👤 Account</a>
+                         
+                        <ul class="dropdown-menu">
+                            <li><a href="login.html">Sign In</a></li>
+                            <li><a href="register.html">Register</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search..." aria-label="Search">
+                    <button type="submit">🔍</button>
+                </div>
+               
+                    <div class="cart-icon">
+                        <a href="cart.html" aria-label="View Cart">
+                            <a href="#cart" style="height: 2rem;" class="cart-icon">🛒</a>
+                            <span id="cart-count" class="cart-count">0</span>
+                        </a>
+                    </div> 
+           
+                
+                <div class="navbar-toggle" onclick="toggleNavbar()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
         </div>
     </header>
     
