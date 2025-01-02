@@ -1,3 +1,46 @@
+let cart = [];
+let cartCount = 0;
+
+// Load cart from local storage on page load
+function loadCart() {
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+        cart = JSON.parse(savedCart);
+        cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+        document.getElementById('cart-count').innerText = cartCount;
+    }
+}
+
+function addToCart(productName, productPrice) {
+    const product = {
+        name: productName,
+        price: productPrice,
+        quantity: 1 // Default quantity
+    };
+
+    // Check if the product is already in the cart
+    const existingProductIndex = cart.findIndex(item => item.name === productName);
+    if (existingProductIndex > -1) {
+        // If it exists, increase the quantity
+        cart[existingProductIndex].quantity += 1;
+    } else {
+        // If it doesn't exist, add it to the cart
+        cart.push(product);
+    }
+
+    // Save cart to local storage
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Update cart count
+    cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+    document.getElementById('cart-count').innerText = cartCount;
+
+    alert(`${productName} added to cart! Total items: ${cartCount}`);
+}
+
+// Call loadCart on page load
+window.onload = loadCart;
+
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
 const totalSlides = slides.length;
@@ -22,8 +65,6 @@ setInterval(() => {
     changeSlide(1);
 }, 5000);
 
-// Initial setup
-updateSliderPosition();COZE
 
 
 function toggleNavbar() {
@@ -80,3 +121,10 @@ dropdowns.forEach(dropdown => {
         }
     });
 });
+function buyNow(productName, productPrice) {
+    // Simulate a purchase action
+    alert(`You have purchased ${productName} for $${productPrice.toFixed(2)}!`);
+    
+    // Optionally, redirect to a checkout page
+    // window.location.href = 'checkout.html';
+}

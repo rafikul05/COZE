@@ -16,7 +16,7 @@ header {
     z-index: 1000; /* Ensure it stays above other content */
     
 }
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .sticky-header{
         padding: 0
     }
@@ -28,7 +28,7 @@ header {
 }
 
 .logo img {
-    height: 35px; /* Adjust logo size */
+    height: 45px; /* Adjust logo size */
 }
 
 
@@ -44,7 +44,7 @@ header {
     display: flex; /* Flexbox for layout */
     justify-content: space-between; /* Space between logo and nav */
     align-items: center; /* Center items vertically */
-    padding: 10px 10px; /* Padding for the header */
+    padding: 10px 20px; /* Padding for the header */
 }
 
 /* Navbar Styles */
@@ -175,7 +175,7 @@ header {
 }
 
 /* Responsive Styles */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .navbar {
         display: none; /* Hide navbar by default on mobile */
         flex-direction: column; /* Stack items vertically */
@@ -438,9 +438,13 @@ li a:hover {
     background-color: white;
     margin: 5px;
     transition: all 0.3s;
+    
 }
-
-@media (max-width: 1224px) {
+li{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+@media (max-width: 1000px) {
     .navbar ul {
         flex-direction: column; /* Stack items vertically on small screens */
         display: none; /* Hide by default */
@@ -448,6 +452,7 @@ li a:hover {
 
     .navbar.active ul {
         display: flex; /* Show when navbar is active */
+        
     }
 
     .navbar-toggle {
@@ -467,7 +472,7 @@ li a:hover {
 .hero {
     position: relative;
     overflow: hidden;
-    height: 60vh; /* Set a specific height */
+    height: 50vh; /* Set a specific height */
     width: 100%; /* Full width */
 }
 

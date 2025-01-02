@@ -43,12 +43,12 @@
                     <button type="submit">🔍</button>
                 </div>
                
-                    <div class="cart-icon">
-                        <a href="cart.html" aria-label="View Cart">
-                            <a href="#cart" style="height: 2rem;" class="cart-icon">🛒</a>
-                            <span id="cart-count" class="cart-count">0</span>
-                        </a>
-                    </div> 
+                <div class="cart-icon">
+                    <a href="cart.html" aria-label="View Cart">
+                        <a href="#cart" style="height: 2rem;" class="cart-icon">🛒</a>
+                        <span id="cart-count" class="cart-count">0</span>
+                    </a>
+                </div>  
            
                 
                 <div class="navbar-toggle" onclick="toggleNavbar()">
@@ -113,7 +113,7 @@
             <div class="product-grid">
                 <!-- Example of a product card -->
                 <div class="product-card">
-                    <img src="https://via.placeholder.com/200" alt="Product Image">
+                    <img class="image" src="https://via.placeholder.com/200" alt="Product Image">
                     <h3>Product Name</h3>
                     <p class="product-description">This is a brief description of the product.</p>
                     <p class="product-price">$29.99</p>
@@ -180,39 +180,6 @@
                     <button class="buy-now" onclick="buyNow('Product Name', 29.99)">Buy Now</button>
                 </div>
                 <!-- Repeat for other products -->
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/200" alt="Product Image">
-                    <h3>Product Name</h3>
-                    <p class="product-description">This is a brief description of the product.</p>
-                    <p class="product-price">$29.99</p>
-                    <div class="product-rating">
-                        ★★★★☆ (4.5)
-                    </div>
-                    <button class="add-to-cart" onclick="addToCart('Product Name', 29.99)">Add to Cart</button>
-                    <button class="buy-now" onclick="buyNow('Product Name', 29.99)">Buy Now</button>
-                </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/200" alt="Product Image">
-                    <h3>Product Name</h3>
-                    <p class="product-description">This is a brief description of the product.</p>
-                    <p class="product-price">$29.99</p>
-                    <div class="product-rating">
-                        ★★★★☆ (4.5)
-                    </div>
-                    <button class="add-to-cart" onclick="addToCart('Product Name', 29.99)">Add to Cart</button>
-                    <button class="buy-now" onclick="buyNow('Product Name', 29.99)">Buy Now</button>
-                </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/200" alt="Product Image">
-                    <h3>Product Name</h3>
-                    <p class="product-description">This is a brief description of the product.</p>
-                    <p class="product-price">$29.99</p>
-                    <div class="product-rating">
-                        ★★★★☆ (4.5)
-                    </div>
-                    <button class="add-to-cart" onclick="addToCart('Product Name', 29.99)">Add to Cart</button>
-                    <button class="buy-now" onclick="buyNow('Product Name', 29.99)">Buy Now</button>
-                </div>
                 <div class="product-card">
                     <img src="https://via.placeholder.com/200" alt="Product Image">
                     <h3>Product Name</h3>
@@ -282,7 +249,6 @@
                 <!-- Add more products as needed -->
             </div>
         </section>
-    
     </main>
 
     <section class="newsletter">
