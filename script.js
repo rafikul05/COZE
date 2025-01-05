@@ -1,4 +1,4 @@
-let cart = [];
+
 let cartCount = 0;
 
 // Load cart from local storage on page load
@@ -11,20 +11,24 @@ function loadCart() {
     }
 }
 
-function addToCart(productName, productPrice) {
-    const product = {
-        name: productName,
-        price: productPrice,
-        quantity: 1 // Default quantity
-    };
+// Call loadCart on page load
+window.onload = loadCart;
 
-    // Check if the product is already in the cart
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+function addToCart(productName, productPrice, productImage) {
     const existingProductIndex = cart.findIndex(item => item.name === productName);
     if (existingProductIndex > -1) {
         // If it exists, increase the quantity
-        cart[existingProductIndex].quantity += 1;
+        cart[existingProductIndex].quantity +=                1;
     } else {
         // If it doesn't exist, add it to the cart
+        const product = {
+            name: productName,
+            price: productPrice,
+            image: productImage,
+            quantity: 1 // Default quantity
+        };
         cart.push(product);
     }
 
@@ -32,14 +36,24 @@ function addToCart(productName, productPrice) {
     localStorage.setItem('cart', JSON.stringify(cart));
 
     // Update cart count
-    cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+    const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
     document.getElementById('cart-count').innerText = cartCount;
 
     alert(`${productName} added to cart! Total items: ${cartCount}`);
 }
 
-// Call loadCart on page load
-window.onload = loadCart;
+function buyNow(productName, productPrice) {
+    // Implement buy now functionality here
+    alert(`Buying ${productName} for $${productPrice}`);
+    // You can redirect to a checkout page or perform other actions here
+}
+
+// Update cart count on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+    document.getElementById('cart-count').innerText = cartCount;
+});
+
 
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');

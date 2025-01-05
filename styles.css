@@ -10,7 +10,7 @@ header {
     background-color: #000769; /* Dark background for header */
     color: white;
     
-    padding: 10px 20px ;
+    padding: 0px 10px ;
     position: sticky; /* Make header sticky */
     top: 0; /* Stick to the top */
     z-index: 1000; /* Ensure it stays above other content */
@@ -18,7 +18,16 @@ header {
 }
 @media (max-width: 1000px) {
     .sticky-header{
-        padding: 0
+        padding: 0;
+        margin:0
+    }
+}
+@media (max-width: 400px) {
+    .logo a img{
+        width: 100px;
+    }
+    .search-bar{
+        margin-left: 2px;
     }
 }
 .header-container {
@@ -44,7 +53,7 @@ header {
     display: flex; /* Flexbox for layout */
     justify-content: space-between; /* Space between logo and nav */
     align-items: center; /* Center items vertically */
-    padding: 10px 20px; /* Padding for the header */
+    padding: 10px 20px 10px 5px; /* Padding for the header */
 }
 
 /* Navbar Styles */
@@ -118,7 +127,7 @@ header {
 }
 
 .search-bar input {
-    padding: 8px; /* Padding for input */
+    padding: 12px; /* Padding for input */
     border: none; /* Remove border */
     border-radius: 5px 0 0 5px; /* Rounded corners for input */
     outline: none; /* Remove outline */
@@ -274,7 +283,8 @@ li a:hover {
 
 .search-bar {
     position: relative; /* For positioning suggestions */
-    margin-right: 20px;
+    margin-right: 5px;
+    margin-left: 15px;
 }
 
 .search-bar input {
@@ -459,8 +469,6 @@ li{
         display: block; /* Show hamburger icon */
     }
     .hero {
-       
-        
         background-repeat: no-repeat;
         display: flex;
         justify-content: center;
@@ -469,10 +477,20 @@ li{
         text-align: center;
     }
 }
+@media (min-width: 1000px) {
+    .hero{
+        height: 30vw;
+        position: relative;
+        overflow: hidden;
+        background-size: cover;
+        object-fit: cover;
+        width: 100%; /* Full width */
+    }
+}
 .hero {
     position: relative;
     overflow: hidden;
-    height: 50vh; /* Set a specific height */
+    
     width: 100%; /* Full width */
 }
 
