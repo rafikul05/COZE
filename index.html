@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COZE</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
 </head>
 <body>
     <header class="sticky-header">
@@ -80,7 +81,36 @@
             <button class="next" onclick="changeSlide(1)">&#10095;</button>
         </div>
     </section>
-
+    <div class="header">
+        <div class="icon-container">
+         <i class="fas fa-shipping-fast icon" style="font-size: 30px;">
+         </i>
+         <span class="text">
+          FREE SHIPPING
+         </span>
+        </div>
+        <div class="icon-container">
+         <i class="fas fa-undo icon" style="font-size: 30px;">
+         </i>
+         <span class="text">
+          EASY RETURN
+         </span>
+        </div>
+        <div class="icon-container">
+         <i class="fas fa-money-check-alt icon" style="font-size: 30px;">
+         </i>
+         <span class="text">
+          CASH ON DELIVERY
+         </span>
+        </div>
+        <div class="icon-container">
+         <i class="fas fa-phone-alt icon" style="font-size: 30px;">
+         </i>
+         <span class="text">
+          24x7 HELP &amp; SUPPORT
+         </span>
+        </div>
+       </div>
     <main>
         <section id="categories">
             <h2>Shop by Category</h2>
@@ -108,6 +138,7 @@
                 
             </div>
         </section>
+        
         <section id="featured-products">
             <h2>Featured Products</h2>
             <div class="product-grid">
@@ -252,21 +283,28 @@
         </section>
     </main>
 
-    <section class="newsletter">
-        <h2>Subscribe to Our Newsletter</h2>
-        <p>Get the latest updates and offers.</p>
-        <input type="email" id="email" placeholder="Enter your email">
-        <button onclick="subscribe()">Subscribe</button>
-    </section>
+   
 
-    <footer>
-        <p>&copy; 2023 Clothing Store. All rights reserved.</p>
-        <div class="social-media">
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-            <a href="#">Twitter</a>
-        </div>
-    </footer>
+    <div class="Foot-container">
+        <h1 class="title">C O Z E</h1>
+        <nav class="footnav">
+            <a href="#">Home</a>
+            <a href="#">Shop</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+        </nav><br>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div><br>
+        <div class="newsletter">
+            <input class="footinput" type="text" placeholder="Subscribe to our newsletter">
+            <button>Subscribe</button>
+        </div><br>
+        <p class="footer">&copy; 2023 COZE. All rights reserved.</p>
+    </div>
 
    
     </div>
