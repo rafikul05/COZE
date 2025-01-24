@@ -142,3 +142,51 @@ function buyNow(productName, productPrice) {
     // Optionally, redirect to a checkout page
     // window.location.href = 'checkout.html';
 }
+const carouselInner = document.getElementById('carousel-inner');
+const prev = document.getElementById('prev');
+const next = document.getElementById('next');
+let currentIndex = 0;
+
+prev.addEventListener('click', () => {
+    if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+    }
+});
+
+next.addEventListener('click', () => {
+    if (currentIndex < carouselInner.children.length - 1) {
+        currentIndex++;
+        updateCarousel();
+    }
+});
+
+function updateCarousel() {
+    const itemWidth = carouselInner.children[0].offsetWidth + 20; // 20 is the margin
+    carouselInner.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+}
+document.addEventListener('DOMContentLoaded', function() {
+    const leftNav = document.querySelector('.carousel-nav.left');
+    const rightNav = document.querySelector('.carousel-nav.right');
+    const carousel = document.querySelector('.product-carousel');
+    let scrollAmount = 0;
+
+    leftNav.addEventListener('click', function() {
+        const productWidth = document.querySelector('.product').offsetWidth + 20; // Including margin
+        scrollAmount -= productWidth;
+        if (scrollAmount < 0) {
+            scrollAmount = 0;
+        }
+        carousel.style.transform = `translateX(-${scrollAmount}px)`;
+    });
+
+    rightNav.addEventListener('click', function() {
+        const productWidth = document.querySelector('.product').offsetWidth + 20; // Including margin
+        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+        scrollAmount += productWidth;
+        if (scrollAmount > maxScroll) {
+            scrollAmount = maxScroll;
+        }
+        carousel.style.transform = `translateX(-${scrollAmount}px)`;
+    });
+});
