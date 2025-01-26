@@ -1,46 +1,31 @@
+function addToCart(imageUrl, name, price) {
+    // Retrieve the current cart from local storage or initialize a new array
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-let cartCount = 0;
-
-// Load cart from local storage on page load
-function loadCart() {
-    const savedCart = localStorage.getItem('cart');
-    if (savedCart) {
-        cart = JSON.parse(savedCart);
-        cartCount = cart.reduce((total, item) => total + item.quantity, 0);
-        document.getElementById('cart-count').innerText = cartCount;
-    }
-}
-
-// Call loadCart on page load
-window.onload = loadCart;
-
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-function addToCart(productName, productPrice, productImage) {
-    const existingProductIndex = cart.findIndex(item => item.name === productName);
+    // Check if the product already exists in the cart
+    const existingProductIndex = cart.findIndex(item => item.name === name);
     if (existingProductIndex > -1) {
-        // If it exists, increase the quantity
-        cart[existingProductIndex].quantity +=                1;
+      // If it exists, increment the quantity
+      cart[existingProductIndex].quantity += 1;
     } else {
-        // If it doesn't exist, add it to the cart
-        const product = {
-            name: productName,
-            price: productPrice,
-            image: productImage,
-            quantity: 1 // Default quantity
-        };
-        cart.push(product);
+      // If not, create a new product object
+      const product = {
+        name,
+        price,
+        imageUrl,
+        quantity: 1
+      };
+      cart.push(product);
     }
 
-    // Save cart to local storage
+    // Save the updated cart back to local storage
     localStorage.setItem('cart', JSON.stringify(cart));
 
-    // Update cart count
-    const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
-    document.getElementById('cart-count').innerText = cartCount;
+    // Optional: Notify the user
+    alert(`${name} has been added to your cart!`);
+    renderCart();
+  }
 
-    alert(`${productName} added to cart! Total items: ${cartCount}`);
-}
 
 function buyNow(productName, productPrice) {
     // Implement buy now functionality here
