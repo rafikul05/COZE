@@ -190,3 +190,90 @@ document.addEventListener('DOMContentLoaded', function() {
         carousel.style.transform = `translateX(-${scrollAmount}px)`;
     });
 });
+        // descrive
+        const images = [
+            'https://storage.googleapis.com/a1aa/image/a6hZbTPbZZb5L5F4Veo8UcIc5bFUcGI2Na7OANjQGUCuRREKA.jpg',
+            'https://storage.googleapis.com/a1aa/image/Nqb2NyLtRCIPOpbOg9LRJ8Dd9lyhZQVwehXh1e9dZWVajiIUA.jpg',
+            'https://storage.googleapis.com/a1aa/image/wO0HnIJTSKJmNhezfu8n8rOkqsvBxvWVPKJI5AqSA9EdjiIUA.jpg'
+        ];
+        let currentImageIndex = 0;
+
+        function changeImage(index) {
+            document.getElementById('main-image').src = images[index];
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex > 0) ? currentImageIndex - 1 : images.length - 1;
+            changeImage(currentImageIndex);
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex < images.length - 1) ? currentImageIndex + 1 : 0;
+            changeImage(currentImageIndex);
+        }
+
+        function decreaseQuantity() {
+            let quantity = document.getElementById('quantity').value;
+            if (quantity > 1) {
+                document.getElementById('quantity').value = --quantity;
+            }
+        }
+
+        function increaseQuantity() {
+            let quantity = document.getElementById('quantity').value;
+            document.getElementById('quantity').value = ++quantity;
+        }
+
+        // Swipe functionality for mobile
+        let startX;
+        const mainImageContainer = document.getElementById('main-image-container');
+
+        mainImageContainer.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+
+        mainImageContainer.addEventListener('touchmove', (e) => {
+            if (!startX) return;
+            let moveX = e.touches[0].clientX;
+            let diffX = startX - moveX;
+
+            if (diffX > 50) {
+                nextImage();
+                startX = null;
+            } else if (diffX < -50) {
+                prevImage();
+                startX = null;
+            }
+        });
+
+        // fun
+        // Shows the product details in the description container
+  function showProductDetails(name, title, description, price, imageUrl) {
+    const descriptionContainer = document.getElementById('containerDes');
+    descriptionContainer.style.display = 'flex'; // Show the container
+
+    document.querySelector('.product-carousel-wrapper').style.display = 'none'; // Hide carousel
+    document.querySelector('.hero').style.display = 'none'; 
+    document.querySelector('.header').style.display = 'none'; 
+    document.querySelector('.cat').style.display = 'none'; 
+    document.querySelector('.containerBrand').style.display = 'none'; 
+    document.querySelector('.main').style.display = 'none'; 
+    document.querySelector('.containerSize').style.display = 'none'; 
+    document.querySelector('.containerTenti').style.display = 'none'; 
+    document.querySelector('.our-store').style.display = 'none'; 
+    document.querySelector('.containerSEC').style.display = 'none';
+    document.querySelector('.containerLast').style.display = 'none';  
+
+    // Populate the details in the container
+    document.getElementById('details-title').innerText = title;
+    document.getElementById('details-price').innerText = price;
+    document.getElementById('details-image').src = imageUrl;
+  }
+
+  // Hides the product details and returns to the carousel view
+  function hideProductDetails() {
+    const descriptionContainer = document.getElementById('product-description');
+    descriptionContainer.style.display = 'none'; // Hide the container
+
+    document.querySelector('.product-carousel-wrapper').style.display = 'flex'; // Show carousel
+  }
