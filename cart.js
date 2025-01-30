@@ -18,7 +18,6 @@ const save= document.getElementById('save')
             const itemTotal = item.price * item.quantity;
             subtotal += itemTotal;
             totalQuantity += item.quantity; // Add to total quantity
-        
             const row = document.createElement('tr');
             row.setAttribute('data-id', index);
             row.innerHTML = `

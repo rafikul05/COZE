@@ -24,13 +24,24 @@ header {
         margin:0
     }
 }
-@media (max-width: 400px) {
+@media(max-width:764px){
+     #logoImg{
+        width: 100px;
+        height: 45px;
+    }
+}
+@media (max-width: 420px) {
     .logoMain a img{
         width: 100px;
     }
     .search-bar{
         margin-left: 2px;
     }
+    #logoImg{
+        width: 55px;
+        height: 40px;
+    }
+   
 }
 .ontainer {
     display: flex;
@@ -152,6 +163,7 @@ header {
 /* Cart Icon Styles */
 .cart-icon {
     position: relative; /* Position relative for cart count */
+   margin-right: 5px;
 }
 
 .cart-icon img {
@@ -346,7 +358,11 @@ li a:hover {
     cursor: pointer; /* Pointer cursor on hover */
     transition: transform 0.2s; /* Smooth scale transition */
 }
-
+@media(max-width:400px){
+    .cart-icon {
+         margin-right: 0px;
+    }
+}
 .cart-icon:hover {
     transform: scale(1.1); /* Slightly enlarge on hover */
 }
@@ -493,7 +509,7 @@ li{
 .hero {
     position: relative;
     overflow: hidden;
-    
+    height: auto;
     width: 100%; /* Full width */
 }
 
@@ -1006,6 +1022,9 @@ h2,  h2 {
     cursor: pointer;
 }
 @media (max-width: 600px) {
+    .containerSize{
+        width: 90vw;
+    }
     .carousel {
         flex-direction: row;
         overflow-x: scroll;
@@ -1020,6 +1039,10 @@ h2,  h2 {
         padding: 10px;
     }
     .arrow {
+        display: none;
+    }
+}@media(max-width:1024px){
+    .pHide{
         display: none;
     }
 }
@@ -1042,10 +1065,10 @@ h2,  h2 {
 }
 .containerBrand {
     text-align: center;
-    width: 100%;
+    width: 90vw;
     max-width: 1200px;
-    padding: 20px 20px 0px 20px;
-    margin-left: 14%;
+    padding: 20px auto;
+   margin:auto ;
 }
 .title {
     font-size: 24px;
@@ -1084,6 +1107,7 @@ h2,  h2 {
 @media(max-width: 420px){
     .containerBrand{
         margin-left: 0px;
+        width: 90vw;
     }
 }
 @media (max-width: 768px) {
@@ -1098,6 +1122,7 @@ h2,  h2 {
     }
     .containerBrand{
         margin-left: 0px;
+        width: 90vw;
     }
 }
 body {
@@ -1179,13 +1204,20 @@ body {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+
 @media (max-width: 768px) {
     .testimonial-item {
         width: 100%;
         margin: 10px 0;
+        padding: 0 0 10px 0;
     }
     .store-images img {
-        width: 100%;
+        width: 95%;
+        margin: 5px auto;
+    }
+    .containerTenti{
+        width: 90vw;
+        padding: 0px;
     }
 }
 body {
@@ -1276,6 +1308,7 @@ body {
 @media (min-width: 769px) {
     .containerSEC {
         padding: 40px;
+        width: 90vw;
     }
     .image-section {
         flex: 1.5;
@@ -1525,6 +1558,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin: 40px auto;
+    margin-top: 0px;
 }
 .left-column {
     flex: 1;
@@ -1574,7 +1608,15 @@ body {
 .breadcrumb {
     font-size: 14px;
     color: #888;
-    margin-bottom: 20px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    align-content:center;
+    gap: 10px;
+    width: 75%;
+    margin: 20px auto;
+    margin-bottom: 0;
+    padding:10px ;
 }
 .breadcrumb a {
     color: #888;
@@ -1585,8 +1627,10 @@ body {
 }
 #details-title{
     font-size: 24px;
-    font-weight: 500;
-    margin-bottom: 10px;
+    font-weight:500;
+    color: #1f1f1f;
+
+
 }
 .product-sku {
     font-size: 14px;

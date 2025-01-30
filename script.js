@@ -150,31 +150,37 @@ function updateCarousel() {
     const itemWidth = carouselInner.children[0].offsetWidth + 20; // 20 is the margin
     carouselInner.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
 }
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const leftNav = document.querySelector('.carousel-nav.left');
     const rightNav = document.querySelector('.carousel-nav.right');
     const carousel = document.querySelector('.product-carousel');
     let scrollAmount = 0;
 
-    leftNav.addEventListener('click', function() {
-        const productWidth = document.querySelector('.product').offsetWidth + 20; // Including margin
-        scrollAmount -= productWidth;
-        if (scrollAmount < 0) {
-            scrollAmount = 0;
-        }
+    // Add smooth transition to the carousel
+    carousel.style.transition = 'transform 0.3s ease-in-out';
+
+    function getProductWidth() {
+        const product = document.querySelector('.product');
+        const productStyle = getComputedStyle(product);
+        const productWidth = product.offsetWidth;
+        const productMargin = parseInt(productStyle.marginRight) + parseInt(productStyle.marginLeft);
+        return productWidth + productMargin;
+    }
+
+    leftNav.addEventListener('click', function () {
+        const productWidth = getProductWidth();
+        scrollAmount = Math.max(0, scrollAmount - productWidth); // Prevent negative scroll
         carousel.style.transform = `translateX(-${scrollAmount}px)`;
     });
 
-    rightNav.addEventListener('click', function() {
-        const productWidth = document.querySelector('.product').offsetWidth + 20; // Including margin
+    rightNav.addEventListener('click', function () {
+        const productWidth = getProductWidth();
         const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-        scrollAmount += productWidth;
-        if (scrollAmount > maxScroll) {
-            scrollAmount = maxScroll;
-        }
+        scrollAmount = Math.min(maxScroll, scrollAmount + productWidth); // Prevent over-scrolling
         carousel.style.transform = `translateX(-${scrollAmount}px)`;
     });
 });
+
         // descrive
         const images = [
             'https://storage.googleapis.com/a1aa/image/a6hZbTPbZZb5L5F4Veo8UcIc5bFUcGI2Na7OANjQGUCuRREKA.jpg',
