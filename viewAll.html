@@ -1,0 +1,818 @@
+<html>
+ <head>
+  <title>
+COZE | View All
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .containerViewAll {
+            display: flex;
+            padding: 20px;
+        }
+        .lowerlab{
+            align-items: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items:start ;
+        }
+        .filt{
+            margin-right: 10px;
+            align-items: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items:start ;
+            width: 20%;
+            height: fit-content;
+            padding: 20px;
+            transition: transform 0.3s ease;
+            background-color: #ddd;
+        }
+        .filt h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .filt .lab {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .filt input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .filt .price-range {
+            margin-top: 20px;
+        }
+        .filt .price-range input {
+            width: 100%;
+        }
+        .main-content {
+            width: 80%;
+        }
+        .main-content .headerView {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .main-content .headerView h2 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .main-content .headerView .view-options {
+            display: flex;
+            align-items: center;
+        }
+        .main-content .headerView .view-options i {
+            font-size: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .main-content .headerView .sort-options {
+            font-size: 14px;
+        }
+        .sort-options{
+            margin-left: 40px;
+        }
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .product-item {
+            width: 20%;
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .product-item img {
+            width: 100%;
+            height: auto;
+        }
+        .product-item .discount {
+            position: absolute;
+            background-color: green;
+            color: white;
+            padding: 5px;
+            font-size: 12px;
+            top: 10px;
+            left: 10px;
+        }
+        .product-item .name {
+            font-size: 16px;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        .product-item .old-price {
+            text-decoration: line-through;
+            color: #999;
+        }
+        .product-item .new-price {
+            color: green;
+            font-weight: 700;
+        }
+        .filter-button {
+            display: none;
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .close-btn{
+            display: none;
+        }
+        .cart-iconProduct {
+            opacity: 0;
+            position: absolute;
+            bottom: -200px;
+            left: 40%;
+            transform: translateX(-50%);
+            background-color: #f1faf8;
+            transform: translateY(-300%);
+            color: #000000;
+            padding: 10px;
+            border-radius: 10%;
+            transition: bottom 0.3s ease;
+        }
+        .product-item:hover .cart-iconProduct{
+            bottom: 10px;
+            opacity: 1;
+        }
+        @media (max-width: 768px) {
+            .filter-button  {
+                display: block;
+            }
+            .containerViewAll {
+                flex-direction: column;
+            }
+            .filt {
+                width: 80vw;
+                padding-right: 0;
+                padding-left: 20px;
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100%;
+                background-color: #fff;
+                z-index: 999;
+                transform: translateX(-100%);
+                box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+                overflow-y: auto;
+            }
+            .filt .close-btn {
+                display: block;
+                text-align: right;
+                padding: 10px;
+                cursor: pointer;
+                font-size: 20px;
+            }
+            .main-content {
+                width: 100%;
+            }
+            .product-item {
+                width: calc(45% - 15px);
+                margin-bottom: 5px;
+            }
+            
+            #gayab{
+                display: none;
+            }
+        }
+        @media (max-width: 480px) {
+            
+            .filter-button {
+                display: block;
+            }
+            .product-item {
+                width: calc(45% - 15px);
+                margin-bottom: 5px;
+            }
+            
+            #gayab{
+                display: none;
+            }
+        }
+        .top-bar {
+            background-color: #f8f8f8;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+  </style>
+ </head>
+ <body>
+    <header class="sticky-header">
+        <div class="header-container">
+            <div class="logoMane">
+                <a href="index.html"><img id="logoImg" src="img/Screenshot from 2024-12-16 12-06-13.png" alt="Your Store Logo"></a>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">🏠 Home</a></li>
+                    <li><a href="products.html">🛍️ Products</a></li>
+                    <li><a href="about.html">ℹ️ About Us</a></li>
+                    <li><a href="contact.html">📞 Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" aria-haspopup="true" aria-expanded="false">📂 Categories</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="category1.html">Category 1</a></li>
+                            <li><a href="category2.html">Category 2</a></li>
+                            <li><a href="category3.html">Category 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="user-account dropdown">
+                      
+                        <a href="#" aria-haspopup="true" aria-expanded="false">👤 Account</a>
+                         
+                        <ul class="dropdown-menu">
+                            <li><a href="login.html">Sign In</a></li>
+                            <li><a href="register.html">Register</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search..." aria-label="Search">
+                    <button type="submit">🔍</button>
+                </div>
+               
+                <div class="cart-icon">
+                    <a href="cart.html" aria-label="View Cart">
+                        <a href="cart.html" style="height: 2.5rem;" class="cart-icon">🛒</a>
+                        <span id="cart-count" class="cart-count">0</span>
+                    </a>
+                </div>  
+           
+                
+                <div class="navbar-toggle" onclick="toggleNavbar()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </header>
+  <div class="top-bar">
+   <h2>
+    FLAT 40% OFF
+   </h2>
+  </div>
+  <button class="filter-button" onclick="toggleSidebar()">
+   Filter
+  </button>
+  <div class="containerViewAll">
+   <div class="filt" id="filt">
+    <div class="close-btn" onclick="toggleSidebar()">
+     X
+    </div>
+    <h3>
+     FILTER BY CATEGORIES
+    </h3>
+    <label class="lab">
+     <input class="filter" data-filter="Crop Top" type="checkbox"/>
+     Crop Top
+    </label>
+    <label class="lab">
+     <input class="filter" data-filter="Dress" type="checkbox"/>
+     Dress
+    </label>
+    <label class="lab">
+     <input class="filter" data-filter="Jumpsuit" type="checkbox"/>
+     Jumpsuit
+    </label>
+    <label class="lab">
+     <input class="filter" data-filter="Long Maxi" type="checkbox"/>
+     Long Maxi
+    </label >
+    <label class="lab">
+     <input class="filter" data-filter="Pant/ Trouser" type="checkbox"/>
+     Pant/ Trouser
+    </label>
+    <label class="lab">
+     <input class="filter" data-filter="Shirt" type="checkbox"/>
+     Shirt
+    </label>
+    <label class="lab">
+     <input class="filter" data-filter="Skirt" type="checkbox"/>
+     Skirt
+    </label>
+    <label class="lab">
+     <input class="filter" data-filter="Shorts" type="checkbox"/>
+     Shorts
+    </label>
+    <label class="lab">
+     <input class="filter" data-filter="Jacket/ Shrug" type="checkbox"/>
+     Jacket/ Shrug
+    </label>
+    <label class="lab">
+     <input class="filter" data-filter="T-Shirt" type="checkbox"/>
+     T-Shirt
+    </label>
+    
+    <h3>
+     GENDER
+    </h3>
+    <label class="lab">
+     <input class="filter" data-filter="Women" type="checkbox"/>
+     Women
+    </label>
+    <label class="lab">
+     <input class="filter" data-filter="Men" type="checkbox"/>
+     Men
+    </label>
+    <h3>
+     SIZE
+    </h3>
+    <label class="lab">
+     <input class="filter" data-filter="XS" type="checkbox"/>
+     XS
+    </label>
+    <label class="lab">
+     <input class="filter" data-filter="S" type="checkbox"/>
+     S
+    </label>
+    <label class="lab">
+     <input class="filter" data-filter="M" type="checkbox"/>
+     M
+    </label>
+    <label class="lab">
+     <input class="filter" data-filter="L" type="checkbox"/>
+     L
+    </label class="lab">
+    <label>
+     <input class="filter" data-filter="XL" type="checkbox"/>
+     XL
+    </label>
+    <label class="lab">
+     <input class="filter" data-filter="2XL" type="checkbox"/>
+     2XL
+    </label>
+    <label class="lab">
+     <input class="filter" data-filter="3XL" type="checkbox"/>
+     3XL
+    </label>
+    <label class="lab">
+     <input class="filter" data-filter="4XL" type="checkbox"/>
+     4XL
+    </label>
+    <h3>
+     PRICE
+    </h3>
+    <div class="price-range">
+     <input id="priceRange" max="2099" min="0" type="range" value="0"/>
+     <span id="priceValue">
+      0
+     </span>
+    </div>
+    
+    
+   </div>
+   <div class="main-content">
+    <div class="headerView">
+     <div class="view-options">
+      <i class="fas fa-th-large">
+      </i>
+      <i class="fas fa-th-list">
+      </i>
+     </div>
+     <div class="sort-options">
+      Showing: 1-40 of 64 Results
+      <select id="sortOptions">
+       <option value="newToOld">
+        New to Old
+       </option>
+       <option value="oldToNew">
+        Old to New
+       </option>
+      </select>
+     </div>
+    </div>
+    <div class="product-grid" id="productGrid">
+     <div class="product-item" data-brand="Brand 1" data-category="Shorts" data-gender="Women" data-price="419" data-size="M">
+      <div class="discount">
+       -40%
+      </div>
+      <img alt="Justice Grey Shorts" height="300" src="https://storage.googleapis.com/a1aa/image/CeYk4FX8WhXtC6IXtHu3hs4ysen1eOkFDHsNR9Lg5ciFxKRoA.jpg" width="200"/>
+      <div class="name">
+       Justice Grey Shorts
+      </div>
+      <div class="old-price">
+       Rs. 699.00
+      </div>
+      <div class="new-price">
+       Rs. 419.00
+      </div>
+        <div class="cart-iconProduct">
+            <i class="fas fa-shopping-cart">
+            </i>
+        </div>
+     </div>
+     <div class="product-item" data-brand="Brand 2" data-category="Dress" data-gender="Women" data-price="1199" data-size="M">
+      <div class="discount">
+       -40%
+      </div>
+      <img alt="Asos Pink Dress" height="300" src="https://storage.googleapis.com/a1aa/image/6R4aMd5w7655KhGX2SY0Umv6nvkLQTiCPkKyRe2ZCb7OsSEKA.jpg" width="200"/>
+      <div class="name">
+       Asos Pink Dress
+      </div>
+      <div class="old-price">
+       Rs. 1,999.00
+      </div>
+      <div class="new-price">
+       Rs. 1,199.00
+      </div>
+      <div class="cart-iconProduct">
+        <i class="fas fa-shopping-cart">
+        </i>
+    </div>
+     </div>
+     <div class="product-item" data-brand="Brand 3" data-category="Dress" data-gender="Women" data-price="1799" data-size="L">
+      <div class="discount">
+       -40%
+      </div>
+      <img alt="Guess White Dress (without belt)" height="300" src="https://storage.googleapis.com/a1aa/image/yf7hCh8E02VhA6VC5cF7oJkpTtR2OJSeLPrWYL2meuVLxKRoA.jpg" width="200"/>
+      <div class="name">
+       Guess White Dress (without belt)
+      </div>
+      <div class="old-price">
+       Rs. 2,999.00
+      </div>
+      <div class="new-price">
+       Rs. 1,799.00
+      </div>
+      <div class="cart-iconProduct">
+        <i class="fas fa-shopping-cart">
+        </i>
+    </div>
+     </div>
+     
+     <div class="product-item" data-brand="Brand 1" data-category="Dress" data-gender="Women" data-price="479" data-size="S">
+      <div class="discount">
+       -40%
+      </div>
+      <img alt="Koovs Purple Dress" height="300" src="https://storage.googleapis.com/a1aa/image/SFt5wBIkO8JSMlzkaWxw9j7MQYMwTRedjVAEeHkaNuAcYlIUA.jpg" width="200"/>
+      <div class="name">
+       Koovs Purple Dress
+      </div>
+      <div class="old-price">
+       Rs. 799.00
+      </div>
+      <div class="new-price">
+       Rs. 479.00
+      </div>
+      <div class="cart-iconProduct">
+        <i class="fas fa-shopping-cart">
+        </i>
+    </div>
+     </div>
+     <div class="product-item" data-brand="Brand 2" data-category="Dress" data-gender="Women" data-price="779" data-size="M">
+      <div class="discount">
+       -40%
+      </div>
+      <img alt="Zara Grey Dress" height="300" src="https://storage.googleapis.com/a1aa/image/MSry8eYbnescyU8kddjPi18r0sTq9NOZnfutWFfyYSNGiViQB.jpg" width="200"/>
+      <div class="name">
+       Zara Grey Dress
+      </div>
+      <div class="old-price">
+       Rs. 1,299.00
+      </div>
+      <div class="new-price">
+       Rs. 779.00
+      </div>
+      <div class="cart-iconProduct">
+        <i class="fas fa-shopping-cart">
+        </i>
+    </div>
+     </div>
+     <div class="product-item" data-brand="Brand 3" data-category="Top" data-gender="Women" data-price="1199" data-size="L">
+      <div class="discount">
+       -40%
+      </div>
+      <img alt="Vince Camuto Black Top" height="300" src="https://storage.googleapis.com/a1aa/image/LB2mA9GPuZoNPhkXAwMPezaIlZKWvIaaM0p61DOjJbHPsSEKA.jpg" width="200"/>
+      <div class="name">
+       Vince Camuto Black Top
+      </div>
+      <div class="old-price">
+       Rs. 1,999.00
+      </div>
+      <div class="new-price">
+       Rs. 1,199.00
+      </div>
+      <div class="cart-iconProduct">
+        <i class="fas fa-shopping-cart">
+        </i>
+    </div>
+     </div>
+     <div class="product-item" data-brand="Brand 1" data-category="Skirt" data-gender="Women" data-price="419" data-size="S">
+      <div class="discount">
+       -40%
+      </div>
+      <img alt="Boutique Wear Maroon Skirt" height="300" src="https://storage.googleapis.com/a1aa/image/kNxZM28N6Mp1Np7089FQTDqf4H2pyAGj9WlYqgPGRXmPsSEKA.jpg" width="200"/>
+      <div class="name">
+       Boutique Wear Maroon Skirt
+      </div>
+      <div class="old-price">
+       Rs. 699.00
+      </div>
+      <div class="new-price">
+       Rs. 419.00
+      </div>
+      <div class="cart-iconProduct">
+        <i class="fas fa-shopping-cart">
+        </i>
+    </div>
+    </div>
+    
+     <div class="product-item" data-brand="Brand 2" data-category="Skirt" data-gender="Women" data-price="419" data-size="M">
+      <div class="discount">
+       -40%
+      </div>
+      <img alt="Weekender Black Skirt" height="300" src="https://storage.googleapis.com/a1aa/image/wg3bR5IpsBK5JJsGZ19AmPcMlgeHmjhY1JPyOhSUhaTSsSEKA.jpg" width="200"/>
+      <div class="name">
+       Weekender Black Skirt
+      </div>
+      <div class="old-price">
+       Rs. 699.00
+      </div>
+      <div class="new-price">
+       Rs. 419.00
+      </div>
+      <div class="cart-iconProduct">
+        <i class="fas fa-shopping-cart">
+        </i>
+    </div>
+    </div>
+    
+    </div>
+   </div>
+  </div>
+  <div class="container">
+    <div class="header">
+     FLAT 40% Off
+    </div>
+    <div class="product-carousel-wrapper">
+     <div class="carousel-nav left">
+      <i class="fas fa-chevron-left">
+      </i>
+     </div>
+     <div class="product-carousel">
+      <div class="product" >
+       <div class="discount-badge">
+        -40%
+       </div>
+       <img onclick="showProductDetails('Justice Grey Shorts', 'Justice Grey Shorts', 'A comfortable and stylish t-shirt made from 100% cotton.', 'Rs. 419.00', 'https://storage.googleapis.com/a1aa/image/aJBy7HSFEpb7PNeKFVw2gU2VtjieAux8dEJu82elgMlyYsQoA.jpg')" alt="Justice Grey Shorts" height="310" src="https://storage.googleapis.com/a1aa/image/aJBy7HSFEpb7PNeKFVw2gU2VtjieAux8dEJu82elgMlyYsQoA.jpg" width="200"/>
+       <div class="product-name">
+        Justice Grey Shorts
+       </div>
+       <div class="original-price">
+        Rs. 699.00
+       </div>
+       <div class="discounted-price">
+        Rs. 419.00
+       </div>
+       <div class="cart-iconProduct" onclick="addToCart('Justice Grey Shorts', 'Rs. 419.00')">
+        <i class="fas fa-shopping-cart">
+        </i>
+       </div>
+      </div>
+      <div class="product" >
+       <div class="discount-badge">
+        -40%
+       </div>
+       <img onclick="showProductDetails('Asos Pink Dress', 'Asos Pink Dress', 'A comfortable and stylish Asos Pink Dress made from 100% cotton.', 'Rs. 1,199.00', 'https://storage.googleapis.com/a1aa/image/B7sTDOO3vUY5AFfILiw1WXuGex08stkiG06PajvDZKiXMWIUA.jpg')" alt="Asos Pink Dress" height="310" src="https://storage.googleapis.com/a1aa/image/B7sTDOO3vUY5AFfILiw1WXuGex08stkiG06PajvDZKiXMWIUA.jpg" width="200"/>
+       <div class="product-name">
+        Asos Pink Dress
+       </div>
+       <div class="original-price">
+        Rs. 1,999.00
+       </div>
+       <div class="discounted-price">
+        Rs. 1,199.00
+       </div>
+       <div class="cart-iconProduct" onclick="addToCart('Asos Pink Dress', 'Rs. 1,199.00')">
+        <i class="fas fa-shopping-cart">
+        </i>
+       </div>
+      </div>
+      <div class="product">
+       <div class="discount-badge">
+        -40%
+       </div>
+       <img onclick="showProductDetails('Guess White Dress (without belt)', 'Guess White Dress (without belt)', 'A comfortable and stylish Guess White Dress (without belt) made from 100% cotton.', 'Rs. 1,799.00', 'https://storage.googleapis.com/a1aa/image/cq0OtXlS3ioSKFpleeWhuwhBQDeGeRe4krzUvtx6YVe2GjFCF.jpg')" alt="Guess White Dress (without belt)" height="310" src="https://storage.googleapis.com/a1aa/image/cq0OtXlS3ioSKFpleeWhuwhBQDeGeRe4krzUvtx6YVe2GjFCF.jpg" width="200"/>
+       <div class="product-name">
+        Guess White Dress (without belt)
+       </div>
+       <div class="original-price">
+        Rs. 2,999.00
+       </div>
+       <div class="discounted-price">
+        Rs. 1,799.00
+       </div>
+       <div class="cart-iconProduct" onclick="addToCart('Asos Pink Dress', 'Rs. 1,199.00')">
+        <i class="fas fa-shopping-cart">
+        </i>
+       </div>
+      </div>
+      <div class="product" >
+       <div class="discount-badge">
+        -40%
+       </div>
+       <img onclick="showProductDetails('Koovs Purple Dress', 'Koovs Purple Dress', 'A comfortable and stylish Koovs Purple Dress made from 100% cotton.', 'Rs. 479.00', 'https://storage.googleapis.com/a1aa/image/ognt0Vf8zQTHACrL6CXT9KFdHwICdNkfFo0MECHZAC5cMWIUA.jpg')" alt="Koovs Purple Dress" height="310" src="https://storage.googleapis.com/a1aa/image/ognt0Vf8zQTHACrL6CXT9KFdHwICdNkfFo0MECHZAC5cMWIUA.jpg" width="200"/>
+       <div class="product-name">
+        Koovs Purple Dress
+       </div>
+       <div class="original-price">
+        Rs. 799.00
+       </div>
+       <div class="discounted-price">
+        Rs. 479.00
+       </div>
+       <div class="cart-iconProduct" onclick="addToCart('Product Name', 29.99)">
+        <i class="fas fa-shopping-cart">
+        </i>
+       </div>
+      </div>
+      <div class="product">
+       <div class="discount-badge">
+        -40%
+       </div>
+       <img alt="Zara Grey Dress" height="310" src="https://storage.googleapis.com/a1aa/image/A2ll0geDj83zbyQF8eMSLQn1mP2lsNNyoPTNUgZ5WBGVMWIUA.jpg" width="200"/>
+       <div class="product-name">
+        Zara Grey Dress
+       </div>
+       <div class="original-price">
+        Rs. 1,299.00
+       </div>
+       <div class="discounted-price">
+        Rs. 779.00
+       </div>
+       <div class="cart-iconProduct">
+        <i class="fas fa-shopping-cart">
+        </i>
+       </div>
+      </div>
+     </div>
+     <div class="carousel-nav right">
+      <i class="fas fa-chevron-right">
+      </i>
+     </div>
+    </div>
+
+   <div class="container">
+    <div class="header">
+     FLAT 40% Off
+    </div>
+    <div class="product-carousel-wrapper">
+     <div class="carousel-nav left">
+      <i class="fas fa-chevron-left">
+      </i>
+     </div>
+     <div class="product-carousel">
+      <div class="product">
+       <div class="discount-badge">
+        -40%
+       </div>
+       <img alt="Justice Grey Shorts" height="310" src="https://storage.googleapis.com/a1aa/image/aJBy7HSFEpb7PNeKFVw2gU2VtjieAux8dEJu82elgMlyYsQoA.jpg" width="200"/>
+       <div class="product-name">
+        Justice Grey Shorts
+       </div>
+       <div class="original-price">
+        Rs. 699.00
+       </div>
+       <div class="discounted-price">
+        Rs. 419.00
+       </div>
+       <div class="cart-iconProduct">
+        <i class="fas fa-shopping-cart">
+        </i>
+       </div>
+      </div>
+      <div class="product">
+       <div class="discount-badge">
+        -40%
+       </div>
+       <img alt="Asos Pink Dress" height="310" src="https://storage.googleapis.com/a1aa/image/B7sTDOO3vUY5AFfILiw1WXuGex08stkiG06PajvDZKiXMWIUA.jpg" width="200"/>
+       <div class="product-name">
+        Asos Pink Dress
+       </div>
+       <div class="original-price">
+        Rs. 1,999.00
+       </div>
+       <div class="discounted-price">
+        Rs. 1,199.00
+       </div>
+       <div class="cart-iconProduct">
+        <i class="fas fa-shopping-cart">
+        </i>
+       </div>
+      </div>
+      <div class="product">
+       <div class="discount-badge">
+        -40%
+       </div>
+       <img alt="Guess White Dress (without belt)" height="310" src="https://storage.googleapis.com/a1aa/image/cq0OtXlS3ioSKFpleeWhuwhBQDeGeRe4krzUvtx6YVe2GjFCF.jpg" width="200"/>
+       <div class="product-name">
+        Guess White Dress (without belt)
+       </div>
+       <div class="original-price">
+        Rs. 2,999.00
+       </div>
+       <div class="discounted-price">
+        Rs. 1,799.00
+       </div>
+       <div class="cart-iconProduct">
+        <i class="fas fa-shopping-cart">
+        </i>
+       </div>
+      </div>
+      <div class="product">
+       <div class="discount-badge">
+        -40%
+       </div>
+       <img alt="Koovs Purple Dress" height="310" src="https://storage.googleapis.com/a1aa/image/ognt0Vf8zQTHACrL6CXT9KFdHwICdNkfFo0MECHZAC5cMWIUA.jpg" width="200"/>
+       <div class="product-name">
+        Koovs Purple Dress
+       </div>
+       <div class="original-price">
+        Rs. 799.00
+       </div>
+       <div class="discounted-price">
+        Rs. 479.00
+       </div>
+       <div class="cart-iconProduct">
+        <i class="fas fa-shopping-cart">
+        </i>
+       </div>
+      </div>
+      <div class="product">
+       <div class="discount-badge">
+        -40%
+       </div>
+       <img alt="Zara Grey Dress" height="310" src="https://storage.googleapis.com/a1aa/image/A2ll0geDj83zbyQF8eMSLQn1mP2lsNNyoPTNUgZ5WBGVMWIUA.jpg" width="200"/>
+       <div class="product-name">
+        Zara Grey Dress
+       </div>
+       <div class="original-price">
+        Rs. 1,299.00
+       </div>
+       <div class="discounted-price">
+        Rs. 779.00
+       </div>
+       <div class="cart-iconProduct">
+        <i class="fas fa-shopping-cart">
+        </i>
+       </div>
+      </div>
+     </div>
+     <div class="carousel-nav right">
+      <i class="fas fa-chevron-right">
+      </i>
+     </div>
+    </div>
+   </div>
+</div>
+
+<div  class="containerFoot">
+    <div class="logo">C O Z E</div>
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+    </div><br>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-pinterest"></i></a>
+    </div>
+    <div class="newsletter">
+        <input type="text" placeholder="Subscribe to our newsletter">
+        <input type="submit" value="Subscribe">
+    </div>
+    <div class="footer">
+        © 2023 COZE. All rights reserved.
+    </div>
+</div>
+<script src="viewAll.js"></script>
+<script src="cart.js"></script>
+<script src="script.js"></script>
+
+ </body>
+</html>
